@@ -1,4 +1,5 @@
 execute pathogen#infect()
+syntax enable
 syntax on
 
 "插件管理插件pathogen.vim
@@ -8,8 +9,9 @@ filetype plugin indent on
 
 
 
+
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
+"source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
@@ -48,6 +50,10 @@ set ruler			" show the cursor position all the time
 set showcmd			" display incomplete commands
 set incsearch		" do incremental searching
 set tabstop=4
+set ignorecase smartcase    "搜索时忽略大小写
+set nowrapscan              " 禁止在搜索到文件两端时重新搜索
+set hlsearch                " 搜索时高亮显示被找到的文本
+
 
 set number				" line numbers
 set cindent
@@ -76,16 +82,20 @@ set sts=4
 set expandtab
 set softtabstop=4
 set shiftwidth=4
-set autoindent
 set cindent
+set autoindent        "always set autoindenting on
+set smartindent       "set smart indent
+set smarttab          "use tabs at the start of a line, spaces elsewhere
 
 set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s
 set guifont=Consolas:h15
 "修改下字体颜色、VIM默认的白底黑字真不咋滴
+set nobackup
 colorscheme desert
+
 "取消VIM的自动备份功能(自动生成的~文件其实很不待见)
 
-set nobackup
+
 "经常无意按下F5、所以为vim配置python的调试是相当的有必要的。
 map <F12> :! c:\python27\python.exe %
 
@@ -101,9 +111,13 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 map T :TaskList<CR>
 map P :TlistToggle<CR>
 
-
 set filetype=python
 au BufNewFile,BufRead *.py,*.pyw setf python
+
+"python.vim
+"https://github.com/hdima/python-syntax
+let python_highlight_all = 1
+
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
@@ -129,3 +143,12 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1""execute pathogen#infect()" 
+
+"pyflakes
+"https://github.com/kevinw/pyflakes-vim
+let g:pyflakes_use_quickfix = 0
+
+"pydoc
+"http://www.vim.org/scripts/script.php?script_id=910
+let g:pydoc_cmd = 'python -m pydoc' 
+let g:pydoc_open_cmd = 'tabnew' 
