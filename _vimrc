@@ -93,7 +93,10 @@ set guifont=Consolas:h15
 set nobackup
 colorscheme desert
 
-"取消VIM的自动备份功能(自动生成的~文件其实很不待见)
+"设置文本高亮
+"set syntax=txt
+"let tlist_txt_settings = 'txt;c:content;f:figures;t:tables'
+"au BufRead,BufNewFile *.txt setlocal ft=txt
 
 
 "经常无意按下F5、所以为vim配置python的调试是相当的有必要的。
