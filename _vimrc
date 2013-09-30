@@ -95,8 +95,8 @@ colorscheme desert
 
 "设置文本高亮
 "set syntax=txt
-"let tlist_txt_settings = 'txt;c:content;f:figures;t:tables'
-"au BufRead,BufNewFile *.txt setlocal ft=txt
+"au BufRead,BufNewFile *  setfiletype txt
+au BufRead,BufNewFile *.txt setlocal ft=txt "syntax highlight for txt.vim
 
 
 "经常无意按下F5、所以为vim配置python的调试是相当的有必要的。
