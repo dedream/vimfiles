@@ -19,9 +19,26 @@ endif
 
 syn case ignore
 
-syn cluster AlwaysContains add=Errors
-syn cluster NormalContains add=Numbers,CPM,EPM,Links,Letters
+syn cluster AlwaysContains add=Errors,Titles
+syn cluster NormalContains add=Numbers,CPM,EPM,Links
 syn cluster QuoteContains  add=Quoted,SingleQuoted,Bracketed
+
+"标题文本: 前面有任意个空格,数字.[数字.]打头, 并且该行里不含有,.。，等标点符号
+"Title: Lines start with digit and '.'
+syn match Titles "^\(\d\+ \)\+\s*[^,。，]\+$"
+syn match Titles "^\(\d\+ \)\+\s*[^,。，]\+$"
+syn match Titles "^\(\d\+\.\)\+\s*[^,。，]\+$"
+syn match Titles "^\(\d\+\.\)\+\s*[^,。，]\+,"
+
+"标题文本: 汉字数字加'.、'打头，且该行不含,.。，标点符号
+"Title: Lines start with Chinese digit and '.'
+syn match Titles "^\([一二三四五六七八九十][、.]\)\+\s*[^,。，]\+$"
+syn match Titles "^\([一二三四五六七八九十][、.]\)\+\s*[^,。，]\+,"
+
+"标题文本: 以数字打头, 中间有空格, 后跟任意文字. 且该行不含有,.。，标点符号
+"Title: Lines start with digit
+syn match Titles "^\d\s\+.\+\s*[^,。，]$"
+syn match Titles "^\d\s\+.\+\s*[^,。，],"
 
 " English Punctuation Marks
 syn match EPM "[~\-_+*<>\[\]{}=|#@$%&\\/:&\^\.,!?]"
@@ -35,8 +52,11 @@ syn match CPM "[，。；：！？、《》【】“”‘’（）『』「」�
 syn match Numbers "\d\(\.\d\+\)\?"
 syn match Numbers "\d"
 
-"链接
-syn match Links   "\(http\|https\|ftp\)\(\w\|[\-&=,?\:\.\/]\)*"  contains=CPM
+" 链接
+syn match Links   "\<[A-Za-z0-9_.-]\+@\([A-Za-z0-9_-]\+\.\)\+[A-Za-z]\{2,4}\>\(?[A-Za-z0-9%&=+.,@*_-]\+\)\="  contains=CPM
+syn match Links   "\<\(\(https\=\|ftp\|news\|telnet\|gopher\|wais\)://\([A-Za-z0-9._-]\+\(:[^ @]*\)\=@\)\=\|\(www[23]\=\.\|ftp\.\)\)[A-Za-z0-9%._/~:,=$@-]\+\>/*\(?[A-Za-z0-9/%&=+.,@*_-]\+\)\=\(#[A-Za-z0-9%._-]\+\)\="  contains=CPM
+
+
 
 "引号与括号
 syn region Bracketed         matchgroup=CPM  start="[（]"        end="[）]"  contains=@QuoteContains,@NormalContains,@AlwaysContains
@@ -53,7 +73,7 @@ syn region SingleQuoted      matchgroup=CPM  start="[「]"        end="[」]"  c
 syn region SingleQuoted      matchgroup=CPM  start="[‘]"        end="[’]"  contains=@QuoteContains,@NormalContains,@AlwaysContains
 syn region SingleQuoted      matchgroup=CPM  start="[〖]"        end="[〗]"  contains=@QuoteContains,@NormalContains,@AlwaysContains
 syn region Comments          matchgroup=EPM  start="("           end=")"     contains=@QuoteContains,@NormalContains,@AlwaysContains
-syn region Comments          matchgroup=Comments start="\/\/"    end="$"     contains=@AlwaysContains       oneline
+syn region Comments          matchgroup=Comments start="\/\/"    end="$"     contains=@AlwaysContains                 oneline
 syn region Comments          matchgroup=Comments start="\/\*"    end="\*\/"  contains=@AlwaysContains
 syn region Tags              matchgroup=EPM  start="<"           end=">"     contains=@NormalContains,@AlwaysContains oneline
 syn region Tags              matchgroup=EPM  start="{"           end="}"     contains=@NormalContains,@AlwaysContains oneline
@@ -81,9 +101,9 @@ syn case match
   HiLink Links                Underlined
   HiLink Tags                 Function
   HiLink Letters              Identifier
+  HiLink Titles               Function
   delcommand HiLink
 
   hi Errors                   ctermfg=red guifg=red
 
 let b:current_syntax = "txt"
-

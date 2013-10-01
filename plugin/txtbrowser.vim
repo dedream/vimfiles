@@ -1,7 +1,7 @@
 " txtbrowser.vim:	Utilities to browser plain text file.
-" Release:		1.3.5
+" Release:		1.3.4
 " Maintainer:		ypguo<guoyoooping@163.com>
-" Last modified:	2011.08.07
+" Last modified:	2010.08.07
 " License:		GPL.
 
 " ****************** Do not modify after this line ************************
@@ -98,25 +98,25 @@ if v:lang =~ 'zh_CN'
     inoremenu <silent> .51 PopUp.文本浏览工具(&T).后向搜索光标下的单词(&P) <ESC>#
     vnoremenu <silent> .51 PopUp.文本浏览工具(&T).后向搜索选中的文本(&P) y?<C-R>=substitute(escape(@", '.*\\/[]'), "\n", '\\n', 'g')<CR><CR>
 
-    nnoremenu <silent> .51 PopUp.文本浏览工具(&T).加粗(&B) yaw<ESC>:TBBold @\" <CR>
-    inoremenu <silent> .51 PopUp.文本浏览工具(&T).加粗(&B) <ESC>yaw:TBBold @\" <CR>
-    vnoremenu <silent> .51 PopUp.文本浏览工具(&T).加粗(&B) y<ESC>:TBBold @\" <CR>
+    nnoremenu <silent> .51 PopUp.文本浏览工具(&T).变粗光标下的单词(&H) yaw<ESC>:TBBold @\" <CR>
+    inoremenu <silent> .51 PopUp.文本浏览工具(&T).变粗光标下的单词(&H) <ESC>yaw:TBBold @\" <CR>
+    vnoremenu <silent> .51 PopUp.文本浏览工具(&T).变粗选中的文本(&H) y<ESC>:TBBold @\" <CR>
 
-    nnoremenu <silent> .51 PopUp.文本浏览工具(&T).变斜(&I) yaw<ESC>:TBItalic @\" <CR>
-    inoremenu <silent> .51 PopUp.文本浏览工具(&T).变斜(&I) <ESC>yaw:TBItalic @\" <CR>
-    vnoremenu <silent> .51 PopUp.文本浏览工具(&T).变斜(&I) y<ESC>:TBItalic @\" <CR>
+    nnoremenu <silent> .51 PopUp.文本浏览工具(&T).变斜光标下的单词(&H) yaw<ESC>:TBItalic @\" <CR>
+    inoremenu <silent> .51 PopUp.文本浏览工具(&T).变斜光标下的单词(&H) <ESC>yaw:TBItalic @\" <CR>
+    vnoremenu <silent> .51 PopUp.文本浏览工具(&T).变斜选中的文本(&H) y<ESC>:TBItalic @\" <CR>
 
-    nnoremenu <silent> .51 PopUp.文本浏览工具(&T).加红(&R) yaw<ESC>:TBRed @\" <CR>
-    inoremenu <silent> .51 PopUp.文本浏览工具(&T).加红(&R) <ESC>yaw:TBRed @\" <CR>
-    vnoremenu <silent> .51 PopUp.文本浏览工具(&T).加红(&R) y<ESC>:TBRed @\" <CR>
+    nnoremenu <silent> .51 PopUp.文本浏览工具(&T).变红光标下的单词(&H) yaw<ESC>:TBRed @\" <CR>
+    inoremenu <silent> .51 PopUp.文本浏览工具(&T).变红光标下的单词(&H) <ESC>yaw:TBRed @\" <CR>
+    vnoremenu <silent> .51 PopUp.文本浏览工具(&T).变红选中的文本(&H) y<ESC>:TBRed @\" <CR>
 
-    nnoremenu <silent> .51 PopUp.文本浏览工具(&T).加绿 yaw<ESC>:TBGreen @\" <CR>
-    inoremenu <silent> .51 PopUp.文本浏览工具(&T).加绿 <ESC>yaw:TBGreen @\" <CR>
-    vnoremenu <silent> .51 PopUp.文本浏览工具(&T).加绿 y<ESC>:TBGreen @\" <CR>
+    nnoremenu <silent> .51 PopUp.文本浏览工具(&T).变绿光标下的单词(&H) yaw<ESC>:TBGreen @\" <CR>
+    inoremenu <silent> .51 PopUp.文本浏览工具(&T).变绿光标下的单词(&H) <ESC>yaw:TBGreen @\" <CR>
+    vnoremenu <silent> .51 PopUp.文本浏览工具(&T).变绿选中的文本(&H) y<ESC>:TBGreen @\" <CR>
 
-    nnoremenu <silent> .51 PopUp.文本浏览工具(&T).加蓝 yaw<ESC>:TBBlue @\" <CR>
-    inoremenu <silent> .51 PopUp.文本浏览工具(&T).加蓝 <ESC>yaw:TBBlue @\" <CR>
-    vnoremenu <silent> .51 PopUp.文本浏览工具(&T).加蓝 y<ESC>:TBBlue @\" <CR>
+    nnoremenu <silent> .51 PopUp.文本浏览工具(&T).变蓝光标下的单词(&H) yaw<ESC>:TBBlue @\" <CR>
+    inoremenu <silent> .51 PopUp.文本浏览工具(&T).变蓝光标下的单词(&H) <ESC>yaw:TBBlue @\" <CR>
+    vnoremenu <silent> .51 PopUp.文本浏览工具(&T).变蓝选中的文本(&H) y<ESC>:TBBlue @\" <CR>
 
 else
     anoremenu <silent> .51 PopUp.TxtBrowser(&T).Tlist(&T) :Tlist <CR>
@@ -141,21 +141,22 @@ else
     inoremenu <silent> .51 PopUp.TxtBrowser(&T).#\ Search\ Backward(&P) <ESC>#
     vnoremenu <silent> .51 PopUp.TxtBrowser(&T).#\ Search\ Backward(&P) y?<C-R>=substitute(escape(@", '.*\\/[]'), "\n", '\\n', 'g')<CR><CR>
 
-    nnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ bold(&B) yaw<ESC>:TBBold @\" <CR>
-    inoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ bold(&B) <ESC>yaw:TBBold @\" <CR>
-    vnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ bold(&B) y<ESC>:TBBold @\" <CR>
-    nnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ italic(&I) yaw<ESC>:TBItalic @\" <CR>
-    inoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ italic(&I) <ESC>yaw:TBItalic @\" <CR>
-    vnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ italic(&I) y<ESC>:TBItalic @\" <CR>
-    nnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ red(&R) yaw<ESC>:TBRed @\" <CR>
-    inoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ red(&R) <ESC>yaw:TBRed @\" <CR>
-    vnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ red(&R) y<ESC>:TBRed @\" <CR>
-    nnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ green yaw<ESC>:TBGreen @\" <CR>
-    inoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ green <ESC>yaw:TBGreen @\" <CR>
-    vnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ green y<ESC>:TBGreen @\" <CR>
-    nnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ Blue yaw<ESC>:TBBlue @\" <CR>
-    inoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ Blue <ESC>yaw:TBBlue @\" <CR>
-    vnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make\ Blue y<ESC>:TBBlue @\" <CR>
+
+    nnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_bold\ This\ Word(&H) yaw<ESC>:TBBold @\" <CR>
+    inoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_bold\ This\ Word(&H) <ESC>yaw:TBBold @\" <CR>
+    vnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_bold\ Text\ Selected(&H) y<ESC>:TBBold @\" <CR>
+    nnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_italic\ This\ Word(&H) yaw<ESC>:TBItalic @\" <CR>
+    inoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_italic\ This\ Word(&H) <ESC>yaw:TBItalic @\" <CR>
+    vnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_itali\ Text\ Selected(&H) y<ESC>:TBItalic @\" <CR>
+    nnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_red\ This\ Word(&H) yaw<ESC>:TBRed @\" <CR>
+    inoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_red\ This\ Word(&H) <ESC>yaw:TBRed @\" <CR>
+    vnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_red\ Text\ Selected(&H) y<ESC>:TBRed @\" <CR>
+    nnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_green\ This\ Word(&H) yaw<ESC>:TBGreen @\" <CR>
+    inoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_green\ This\ Word(&H) <ESC>yaw:TBGreen @\" <CR>
+    vnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_green\ Text\ Selected(&H) y<ESC>:TBGreen @\" <CR>
+    nnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_Blue\ This\ Word(&H) yaw<ESC>:TBBlue @\" <CR>
+    inoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_Blue\ This\ Word(&H) <ESC>yaw:TBBlue @\" <CR>
+    vnoremenu <silent> .51 PopUp.TxtBrowser(&T).Make_Blue\ Text\ Selected(&H) y<ESC>:TBBlue @\" <CR>
 
 endif
 
@@ -218,9 +219,6 @@ function! s:TxtbrowserGoto(...)
 
     "let url = matchstr(getline("."), '[filehtp]*:\/\/[^>,;]*')
     let url = matchstr(line, "http:\/\/[^ (),:]*")
-    if url==""
-	let url = matchstr(line, "https:\/\/[^ (),:]*")
-    endif
     if url==""
 	let url = matchstr(line, "ftp:\/\/[^ ]*")
     endif
