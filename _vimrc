@@ -7,9 +7,6 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 filetype plugin indent on
 
-
-
-
 set nocompatible
 "source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
@@ -75,7 +72,19 @@ set confirm
 "让vim显示代码的行号(IDLE就不显示)
 set nu
 "设置文件编码
-set fileencodings=utf-8,ucd-bom,gb18030,gbk,gb2312,cp936
+"设置编码格式, 在windows和cygwin下必须用cp936编码, 在其它操作系统下, 用utf-8.
+"if (has("win32") || has("win32unix"))
+"        set encoding=cp936"utf8
+"else
+"        set encoding=utf8
+"endif
+"set fileencodings=ucs-bom,utf-8,default,latin1,cp936,gb18030,big5
+set encoding=utf-8
+set langmenu=zh_CN.UTF-8
+language message zh_CN.UTF-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+
 "设置缩进、（建议设置4个空格作为缩进）
 set tabstop=4
 set sts=4
@@ -94,10 +103,17 @@ set nobackup
 colorscheme desert
 
 "设置文本高亮
-"set syntax=txt
-syntax on "syntax highlighting on
-filetype plugin on
-au BufRead,BufNewFile *.txt setlocal ft=txt 
+"txt.vim
+"http://calon.weblogs.us/tag/vim/
+"http://www.vim.org/scripts/script.php?script_id=3365
+set syntax=txt
+
+"txtbrowser
+"http://www.vim.org/scripts/script.php?script_id=2899
+"au BufRead,BufNewFile *.txt setlocal ft=txt
+"au BufRead,BufNewFile *.log setlocal ft=txt
+"au BufRead,BufNewFile *.txt runtime ftplugin/txtfmt.vim
+"au BufRead,BufNewFile *.txt runtime syntax/txtfmt.vim 
 
 "经常无意按下F5、所以为vim配置python的调试是相当的有必要的。
 map <F12> :! c:\python27\python.exe %
@@ -139,7 +155,7 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
 
-let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_assignments_command = "<leader>gg"
 let g:jedi#goto_definitions_command = "<leader>d"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
@@ -155,3 +171,8 @@ let g:pyflakes_use_quickfix = 0
 "http://www.vim.org/scripts/script.php?script_id=910
 let g:pydoc_cmd = 'python -m pydoc' 
 let g:pydoc_open_cmd = 'tabnew' 
+
+"vim-ps1
+"https://github.com/PProvost/vim-ps1
+let g:ps1_nofold_blocks = 1
+let g:ps1_nofold_sig = 1
