@@ -1,1 +1,5 @@
 Gvim for Win7 32bitsPython IDE
+解决中文乱码问题
+还存在的问题：
+1、txtbrowers插件的<leader>g快捷键不起作用。
+

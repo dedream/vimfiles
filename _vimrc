@@ -79,11 +79,30 @@ set nu
 "        set encoding=utf8
 "endif
 "set fileencodings=ucs-bom,utf-8,default,latin1,cp936,gb18030,big5
+""""""""""""""""""""""""""""""""""""""
+"set fenc=chinese
+"set encoding=utf-8
+"set langmenu=zh_CN.UTF-8
+"language message zh_CN.UTF-8
+"set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+"""""""""""""""""""""""""""""""""""""""
+"========解决中文乱码问题
+set fenc=chinese
+"处理文本中显示乱码
 set encoding=utf-8
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencodings=utf-8,chinese,latin-1
+if has("win32")
+	set fileencoding=chinese
+else
+	set fileencoding=utf-8
+endif
 
+"处理菜单及右键菜单乱码
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+"处理consle输出乱码
+language messages zh_CN.utf-8
+"========中文乱码结束
 
 "设置缩进、（建议设置4个空格作为缩进）
 set tabstop=4
@@ -155,7 +174,7 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
 
-let g:jedi#goto_assignments_command = "<leader>gg"
+let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>d"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
