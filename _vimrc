@@ -68,7 +68,6 @@ syn on
 set completeopt=menu,longest,preview
 set confirm
 
-" imap jj			<Esc>
 "让vim显示代码的行号(IDLE就不显示)
 set nu
 "设置文件编码
@@ -195,3 +194,11 @@ let g:pydoc_open_cmd = 'tabnew'
 "https://github.com/PProvost/vim-ps1
 let g:ps1_nofold_blocks = 1
 let g:ps1_nofold_sig = 1
+
+"ctrlP
+"https://github.com/kien/ctrlp.vim
+"git clone https://github.com/kien/ctrlp.vim.git bundle/ctrlp.vim
+set runtimepath^=~\vimfiles/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
