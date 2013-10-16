@@ -63,7 +63,7 @@ set hid 				" allow switching buffers, which have unsaved changes
 set shiftwidth=4		" 4 characters for indenting
 set showmatch			" showmatch: Show the matching bracket for the last ')'?
 
-set nowrap				" don't wrap by default
+set wrap				" "set nowrap" don't wrap by default
 syn on
 set completeopt=menu,longest,preview
 set confirm
@@ -132,6 +132,15 @@ set syntax=txt
 "au BufRead,BufNewFile *.log setlocal ft=txt
 "au BufRead,BufNewFile *.txt runtime ftplugin/txtfmt.vim
 "au BufRead,BufNewFile *.txt runtime syntax/txtfmt.vim 
+nmap <silent> <F10> <ESC>:Tlist<RETURN>)
+noremap <silent> <F11> <ESC>:TlistUpdate<RETURN>
+syntax on
+filetype plugin on
+au BufRead,BufNewFile *.txt setlocal ft=txt
+
+"设置自动换行
+"set textwidth=78
+"set formatoptions+=mM
 
 "经常无意按下F5、所以为vim配置python的调试是相当的有必要的。
 map <F12> :! c:\python27\python.exe %
