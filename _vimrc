@@ -169,7 +169,8 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 "设置注释c-z，取消为ZZ
 vmap <C-Z> :s/^/#/ <CR>
-vmap ZZ :s/^##*//  <CR>
+map Z :s/^##*//  <CR>
+"vmap <C-ZZ> :s/^##*//  <CR>
 
 "补全
 filetype plugin on
@@ -211,3 +212,5 @@ set runtimepath^=~\vimfiles/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+
+
