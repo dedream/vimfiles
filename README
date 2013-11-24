@@ -1,5 +1,2 @@
-Gvim for Win7 32bitsPython IDE
-解决中文乱码问题
-还存在的问题：
-1、txtbrowers插件的<leader>g快捷键不起作用。
+Gvim for Win7 32bitsPython IDE====================2013-11-24加入插件vim-multiple-cursors修改快捷键C-p为C-f（ctrlP已经使用C-p快捷键）" Default mappinglet g:multi_cursor_next_key='<C-n>'let g:multi_cursor_prev_key='<C-f>'let g:multi_cursor_skip_key='<C-x>'let g:multi_cursor_quit_key='<Esc>'" Map start key separately from next keylet g:multi_cursor_start_key='<F6>'2013-11-22修改“取消注释”的快捷键原为：vmap <C-ZZ> :s/^##*//  <CR>修改为map Z :s/^##*//  <CR>原快捷键经常导致gvim退出，原因不明2013-10-11解决中文乱码问题====================还存在的问题：1、txtbrowers插件的<leader>g快捷键不起作用。
 

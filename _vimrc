@@ -170,7 +170,7 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 "设置注释c-z，取消为ZZ
 vmap <C-Z> :s/^/#/ <CR>
 map Z :s/^##*//  <CR>
-"vmap <C-ZZ> :s/^##*//  <CR>
+"vmap ZZ :s/^##*//  <CR>
 
 "补全
 filetype plugin on
@@ -213,4 +213,15 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
+"vim-multiple-cursors
+"https://github.com/terryma/vim-multiple-cursors
+let g:multi_cursor_use_default_mapping=0
+"let g:multi_cursor_exit_from_visual_mode=1
+" Default mapping
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-f>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+" Map start key separately from next key
+let g:multi_cursor_start_key='<F6>'
 
